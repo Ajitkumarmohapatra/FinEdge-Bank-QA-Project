@@ -2,7 +2,7 @@
 
 ---
 
-This document analyzes the Create Client user interface for User Story US-001. It identifies the screen structure, navigation flow, UI controls, layout, accessibility considerations, and potential UI risks before deriving test scenarios.
+This document analyzes the **Create Client** user interface for **User Story US-001**. It identifies the screen structure, navigation flow, UI components, layout, field behavior, accessibility considerations, and potential UI risks before deriving Test Scenarios and Test Cases.
 
 ---
 
@@ -25,30 +25,45 @@ This document analyzes the Create Client user interface for User Story US-001. I
 
 ## Navigation Path
 
+```
 Login
-→ Institution
-→ Clients
-→ Create Client
+   ↓
+Institution
+   ↓
+Clients
+   ↓
+Create Client
+```
 
 ## Expected Navigation
 
-- The Create Client page shall open after selecting **Clients → Create Client**.
+- User shall successfully navigate to **Clients → Create Client**.
 - The page title shall display **Create Client**.
-- Breadcrumb navigation shall display **Clients > Create Client**.
+- Breadcrumb shall display **Clients > Create Client**.
+- The Create Client page shall open without any errors.
 
 ---
 
 # 3. Page Layout Analysis
 
-The Create Client page contains the following UI sections:
+The Create Client page contains the following sections:
 
 - Page Header
 - Breadcrumb Navigation
 - General Information Section
 - Client Information Form
-- Navigation Buttons
+- Family Members Section
+- Navigation Controls
 
-The overall layout should be clean, responsive, and user-friendly.
+The page follows a clean and responsive Material Design layout.
+
+## Layout Type
+
+- Multi-step Wizard
+- Single Page Form
+- Material Design Components
+- Responsive Layout
+- Left-to-Right Form Flow
 
 ---
 
@@ -58,6 +73,8 @@ The overall layout should be clean, responsive, and user-friendly.
 
 - Office *
 - Legal Form *
+- Gender
+- Staff
 - Client Type
 - Client Classification
 
@@ -69,17 +86,21 @@ The overall layout should be clean, responsive, and user-friendly.
 - First Name *
 - Middle Name
 - Last Name *
+- Mobile Number
+- Email Address
 
 ---
 
-## Date Picker
+## Date Pickers
 
+- Date of Birth
 - Submitted On *
 
 ---
 
 ## Checkboxes
 
+- Is Staff
 - Active
 - Open Savings Account
 
@@ -92,60 +113,220 @@ The overall layout should be clean, responsive, and user-friendly.
 
 ---
 
-# 5. UI Consistency Analysis
+# 5. Mandatory Fields
 
-Verify that:
+The following fields are mandatory and are identified using an asterisk (*).
 
-- All labels use consistent font style.
-- Mandatory fields display an asterisk (*).
-- Form controls have consistent spacing.
-- Alignment is consistent across the page.
-- Buttons follow the same design.
-- Colors follow the application theme.
+- Office
+- Legal Form
+- First Name
+- Last Name
+- Submitted On
 
 ---
 
-# 6. Accessibility Observations
+# 6. Optional Fields
+
+The following fields are optional.
+
+- External ID
+- Middle Name
+- Date of Birth
+- Gender
+- Staff
+- Mobile Number
+- Email Address
+- Client Type
+- Client Classification
+- Active
+- Open Savings Account
+
+---
+
+# 7. Dropdown Analysis
+
+| Dropdown | Purpose |
+|-----------|----------|
+| Office | Select the branch where the client belongs. |
+| Legal Form | Select whether the client is a Person or Entity. |
+| Gender | Select client's gender. |
+| Staff | Associate a staff member with the client. |
+| Client Type | Select customer category. |
+| Client Classification | Select client classification. |
+
+Expected Behavior
+
+- Dropdown opens correctly.
+- All configured values are displayed.
+- User can select only one value.
+- Invalid values cannot be entered.
+- Selected value remains after navigation.
+
+---
+
+# 8. Date Picker Analysis
+
+The Create Client screen contains the following date fields.
+
+- Date of Birth
+- Submitted On
+
+Expected Behavior
+
+- Calendar icon is displayed.
+- User can select a valid date.
+- Invalid dates are rejected.
+- Future Date of Birth is not allowed.
+- Submitted On should default to the current system date.
+- Submitted On should not accept future dates.
+
+---
+
+# 9. Checkbox Analysis
+
+Checkboxes available:
+
+- Is Staff
+- Active
+- Open Savings Account
+
+Expected Behavior
+
+- Default state should be unchecked unless configured.
+- Checkbox should toggle correctly.
+- Checkbox state should remain while navigating.
+- Associated functionality should execute correctly when selected.
+
+---
+
+# 10. Button Analysis
+
+Buttons available:
+
+- Previous
+- Next
+
+Expected Behavior
+
+- Buttons should be visible.
+- Buttons should be properly aligned.
+- Previous should be disabled on the first step.
+- Next should navigate to the next wizard step.
+- Buttons should be keyboard accessible.
+- Buttons should display hover and focus effects.
+
+---
+
+# 11. Validation Message Analysis
+
+Expected Behavior
+
+- Validation messages appear below the respective field.
+- Invalid fields are highlighted.
+- Error messages use consistent formatting.
+- Validation message disappears after correction.
+- Mandatory field errors are displayed when applicable.
+
+---
+
+# 12. UI Consistency Analysis
+
+Verify the following:
+
+- Consistent font style.
+- Consistent font size.
+- Proper alignment.
+- Equal spacing between controls.
+- Consistent button design.
+- Consistent colors.
+- Proper margins and padding.
+- Uniform control sizes.
+- Consistent icon style.
+
+---
+
+# 13. Accessibility Analysis
 
 Verify that:
 
-- Labels are visible.
+- Labels are clearly visible.
 - Keyboard navigation is supported.
-- Tab order is logical.
-- Mandatory fields are clearly indicated.
-- Date picker is accessible.
+- Logical tab order is maintained.
 - Dropdowns are keyboard accessible.
+- Date pickers are keyboard accessible.
+- Checkboxes can be selected using keyboard.
+- Buttons are accessible using keyboard.
+- Mandatory fields are clearly identified.
 
 ---
 
-# 7. UI Risks
+# 14. Responsive Behavior
 
-Potential UI risks include:
+Verify the UI on:
 
-- Misaligned controls
-- Missing mandatory indicators
-- Incorrect labels
-- Poor spacing
-- Responsive layout issues
-- Hidden fields
-- Disabled controls without explanation
+- Desktop
+- Laptop
+- Tablet
+- Mobile
+
+Expected Behavior
+
+- No overlapping controls.
+- No truncated text.
+- Responsive layout maintained.
+- Buttons remain accessible.
+- Dropdowns render correctly.
 
 ---
 
-# 8. UI Improvement Suggestions
+# 15. UI Risks
 
-Possible improvements:
+Potential UI Risks
 
-- Add placeholders where necessary.
-- Improve spacing between controls.
-- Display helper text for optional fields.
-- Highlight validation errors more clearly.
+- Misaligned controls.
+- Missing mandatory indicators.
+- Incorrect field labels.
+- Responsive layout issues.
+- Hidden controls.
+- Disabled controls without explanation.
+- Inconsistent spacing.
+- Validation messages not displayed correctly.
+- Broken navigation.
+
+---
+
+# 16. UI Improvement Suggestions
+
+Possible Improvements
+
+- Display placeholders where appropriate.
+- Improve spacing between related controls.
+- Add helper text for optional fields.
+- Improve validation message visibility.
 - Improve keyboard accessibility.
+- Improve color contrast for accessibility.
+- Display tooltips for complex fields.
 
 ---
 
-# 9. UI Analysis Summary
+# 17. UI Observations
 
-The Create Client screen is designed to capture client information required for creating a new banking customer.
+Observed during UI Analysis
 
-The page contains dropdowns, text fields, checkboxes, a date picker, and navigation buttons. Mandatory fields are identified using an asterisk (*). This analysis provides the foundation for deriving UI test scenarios and detailed test cases.
+- Material Design UI components are used.
+- Multi-step wizard interface.
+- Required fields use an asterisk (*).
+- Navigation uses Previous and Next buttons.
+- Responsive page layout.
+- Consistent alignment of controls.
+- Clean and modern banking application design.
+
+---
+
+# 18. UI Analysis Summary
+
+The Create Client screen consists of a responsive multi-step wizard designed for onboarding new banking customers.
+
+The interface includes dropdowns, text fields, date pickers, checkboxes, and navigation controls. Mandatory fields are clearly identified, while optional fields support additional customer information.
+
+This UI Analysis establishes the foundation for Test Scenario Design, Test Case Development, UI Validation, and Requirement Traceability Matrix (RTM) preparation.
