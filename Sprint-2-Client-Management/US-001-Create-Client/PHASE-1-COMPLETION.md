@@ -7,7 +7,7 @@
 | Item | Details |
 |------|---------|
 | Project Name | FinEdge Bank QA Project |
-| Sprint | Sprint 1 |
+| Sprint | Sprint 2 |
 | User Story | US-001 |
 | Story Name | Create Client |
 | Phase | Requirement Analysis |
@@ -65,7 +65,7 @@ During this phase, the following business concepts were identified and analyzed:
 
 - README.md
 - 01-Requirement-Analysis.md
-- PHASE-1-COMPLETION.md
+- PHASE-2-COMPLETION.md
 
 ---
 
@@ -126,4 +126,4 @@ The project is now ready to proceed to:
 
 ---
 
-**End of Phase 1**
+**End of Phase 2**
