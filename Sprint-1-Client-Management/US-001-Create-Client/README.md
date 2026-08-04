@@ -21,13 +21,13 @@
 ---
 ## Current Status
 
-- [ ] Requirement Analysis
-- [ ] Functional Requirements
-- [ ] Non-Functional Requirements
-- [ ] Business Rules
-- [ ] Risk Analysis
-- [ ] UI Analysis
-- [ ] Test Scenarios
+- [x] Requirement Analysis
+- [x] Functional Requirements
+- [x] Non-Functional Requirements
+- [x] Business Rules
+- [x] Risk Analysis
+- [x] UI Analysis
+- [x] Test Scenarios
 - [ ] Test Cases
 - [ ] API Testing
 - [ ] SQL Validation
@@ -35,6 +35,32 @@
 - [ ] Test Execution
 - [ ] Story Completed
 
+## Description
+
+This story covers the end-to-end testing of the Create Client functionality in the Client Management module.
+
+Testing includes:
+
+- Requirement Analysis
+- UI Validation
+- API Testing
+- Database Validation
+- Selenium Automation
+- Test Execution
+
 ## Current Status
 
-🟡 Requirement Analysis
+🟡 Test cases
+
+## Test Scope
+
+### Included
+- Client creation
+- Mandatory field validation
+- Error validation
+- Business rule validation
+
+### Excluded
+- Savings account creation
+- Loan creation
+- Client approval
