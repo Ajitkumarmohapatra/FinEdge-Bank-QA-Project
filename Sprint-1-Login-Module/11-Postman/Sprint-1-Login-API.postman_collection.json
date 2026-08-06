@@ -1,0 +1,660 @@
+{
+  "info": {
+    "_postman_id": "4e79534a-031b-4cb1-96c7-14313c9834c4",
+    "name": "Sprint-1 Login API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48378428",
+    "_collection_link": "https://go.postman.co/collection/48378428-4e79534a-031b-4cb1-96c7-14313c9834c4?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Sprint-1 Login API",
+      "item": [
+        {
+          "name": "Login-Valid Credentials",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "default",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\" : \"{{username}}\",\r\n    \"password\" :\"{{password}}\",\r\n     \"remember\": false\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/authentication",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "authentication"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - Remember False",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"remember\": false\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/authentication",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "authentication"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - Remember True",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\" : \"{{username}}\",\r\n    \"password\" :\"{{password}}\",\r\n     \"remember\": true\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/authentication",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "authentication"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - Invalid Username",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"test123\",\r\n    \"password\": \"{{password}}\",\r\n    \"remember\": false\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/authentication",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "authentication"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login-Invalid Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"wrongpassword\",\r\n    \"remember\": false\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/authentication",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "authentication"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - Blank Username",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"\",\r\n    \"password\": \"{{password}}\",\r\n    \"remember\": false\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/authentication",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "authentication"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - Blank Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"test123\",\r\n    \"password\": \"\",\r\n    \"remember\": false\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/authentication",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "authentication"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - Blank Username & Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"\",\r\n    \"password\": \"\",\r\n    \"remember\": false\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/authentication",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "authentication"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - Missing Remember",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/authentication",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "authentication"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - Invalid JSON",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}\",\r\n    \"remember\": false"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/authentication",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "authentication"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - Wrong Method",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"test123\",\r\n    \"password\": \"{{password}}\",\r\n    \"remember\": false\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/authentication",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "authentication"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - Wrong Method",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"test123\",\r\n    \"password\": \"{{password}}\",\r\n    \"remember\": false\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/authentication",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "authentication"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - Unsupported Content-Type",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/plain",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"remember\": false\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/authentication",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "authentication"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - SQL Injection",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"' OR '1'='1\",\r\n    \"password\": \"{{password}}\",\r\n    \"remember\": false\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/authentication",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "authentication"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - XSS",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"<script>alert('XSS')</script>\",\r\n    \"password\": \"{{password}}\",\r\n    \"remember\": false\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/authentication",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "authentication"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login-Long Username",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\r\n    \"password\": \"{{password}}\",\r\n    \"remember\": false\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/authentication",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "authentication"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - Long Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\r\n    \"remember\": false\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/authentication",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "authentication"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "let response = pm.response.json();\r",
+          "\r",
+          "// Save token\r",
+          "if (response.base64EncodedAuthenticationKey) {\r",
+          "\r",
+          "    pm.environment.set(\r",
+          "        \"token\",\r",
+          "        response.base64EncodedAuthenticationKey\r",
+          "    );\r",
+          "\r",
+          "    pm.environment.set(\r",
+          "        \"authorization\",\r",
+          "        \"Basic \" + response.base64EncodedAuthenticationKey\r",
+          "    );\r",
+          "\r",
+          "    console.log(\"Authorization Saved Successfully\");\r",
+          "}"
+        ]
+      }
+    }
+  ]
+}
