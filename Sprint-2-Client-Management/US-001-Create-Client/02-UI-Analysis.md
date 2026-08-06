@@ -11,7 +11,7 @@ This document analyzes the **Create Client** user interface for **User Story US-
 | Item | Details |
 |------|---------|
 | Project | FinEdge Bank QA Project |
-| Sprint | Sprint 1 |
+| Sprint | Sprint 2 |
 | User Story | US-001 |
 | Screen Name | Create Client |
 | Module | Client Management |
