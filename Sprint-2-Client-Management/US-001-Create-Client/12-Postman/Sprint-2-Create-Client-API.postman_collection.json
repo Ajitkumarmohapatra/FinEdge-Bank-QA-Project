@@ -1,0 +1,1198 @@
+{
+  "info": {
+    "_postman_id": "4e79534a-031b-4cb1-96c7-14313c9834c4",
+    "name": "Sprint-2 Create Client API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48378428",
+    "_collection_link": "https://go.postman.co/collection/48378428-4e79534a-031b-4cb1-96c7-14313c9834c4?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Sprint-2 Create Client API",
+      "item": [
+        {
+          "name": "Create Client - Valid Data",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"7895698746\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"02 June 2004\",\r\n  \"emailAddress\": \"temp.customere@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"Temp postman\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"05 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client - Missing First Name",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"lastname\": \"Customer\",\r\n  \"mobileNo\": \"7895698746\",\r\n  \"locale\": \"en\",\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"submittedOnDate\": \"05 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client - Missing Last Name",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"7895698786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"02 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"Temp postman2\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"04 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client - Missing Office",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"7895698786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"02 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"Temp postman\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"04 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client - Missing Staff",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"7895398786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"02 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"Temp postman\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"04 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client - Missing Date Format",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"7895698786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateOfBirth\": \"02 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"Temp postman\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"04 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client - Invalid Office ID",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 993,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"7895698786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"02 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"Temp postman\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"04 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client - Invalid Staff ID",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"staffId\": 9999,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"7895698786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"02 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"Temp postman\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"04 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client - Invalid Gender",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 3223,\r\n  \"mobileNo\": \"7895698786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"02 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"Temp postman\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"04 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client - Invalid Date",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"7895698786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"02 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"Temp postman\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"35 August 222026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client - Duplicate Client",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"7895698786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"02 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"Temp postman\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"04 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client - Empty Request Body",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client - Invalid JSON",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"9895698786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"02 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"Temp postman\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"05 August 2026\"\r\n"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client - SQL Injection",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"7595698786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"02 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n \"firstname\": \"'; DROP TABLE m_client; --\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"04 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client - XSS",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"7895698586\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"02 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"<script>alert('XSS')</script>\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"04 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client - Long First Name",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"7895098786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"03 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"05 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client - Long Last Name",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"7895698786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"02 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"Temp postman\",\r\n  \"lastname\": \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"04 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client - Special Characters",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"8895698786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"03 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"@@@@####$$$$%%%%\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"04 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client - Unsupported Content-Type",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"7835698786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"03 June 2004\",\r\n  \"emailAddress\": \"temp.cuestomer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"Temp postman06\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"04 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client - Wrong Method",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"7895698786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"02 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"Temp postman\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"04 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client - Wrong Method",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"7895698786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"02 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"Temp postman\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"04 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client-Missing Authorization-Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"7895098786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"03 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"AA\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"05 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client-Invalid Authorization Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorizationn}} ",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"7895098786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"03 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"AA\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"05 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client-Expired Authorization Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorizationn}} ",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"7895098786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"03 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"AA\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"05 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client-Missing Tenant Header",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}} ",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"7895098786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"03 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"AA\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"05 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Client-Create Client-Invalid Tenant Header",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}mm",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}} ",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"officeId\": 2,\r\n  \"legalFormId\": 1,\r\n  \"isStaff\": false,\r\n  \"active\": false,\r\n  \"genderId\": 32,\r\n  \"mobileNo\": \"7895098786\",\r\n  \"clientClassificationId\": 23,\r\n  \"clientTypeId\": 26,\r\n  \"dateFormat\": \"dd MMMM yyyy\",\r\n  \"dateOfBirth\": \"03 June 2004\",\r\n  \"emailAddress\": \"temp.customer@excample.com\",\r\n  \"familyMembers\": [],\r\n  \"firstname\": \"AA\",\r\n  \"lastname\": \"Customer\",\r\n  \"locale\": \"en\",\r\n  \"submittedOnDate\": \"05 August 2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get-All-Clients",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Fineract-Platform-TenantId",
+                "value": "{{tenant}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}} ",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "let response = pm.response.json();\r",
+          "\r",
+          "// Save token\r",
+          "if (response.base64EncodedAuthenticationKey) {\r",
+          "\r",
+          "    pm.environment.set(\r",
+          "        \"token\",\r",
+          "        response.base64EncodedAuthenticationKey\r",
+          "    );\r",
+          "\r",
+          "    pm.environment.set(\r",
+          "        \"authorization\",\r",
+          "        \"Basic \" + response.base64EncodedAuthenticationKey\r",
+          "    );\r",
+          "\r",
+          "    console.log(\"Authorization Saved Successfully\");\r",
+          "}"
+        ]
+      }
+    }
+  ]
+}
