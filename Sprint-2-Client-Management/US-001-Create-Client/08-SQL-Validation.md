@@ -10,6 +10,8 @@ Query 01 — Verify Client ID and Account Number
 
 Purpose: Verify client IDs and their generated account numbers.
 
+SQL Query:
+
 SELECT id, account_no
 FROM m_client
 WHERE id IN (1,2,3);
@@ -20,6 +22,8 @@ Query 02 — Verify Client IDs Within a Range
 
 Purpose: Retrieve clients whose IDs fall between 1 and 3.
 
+SQL Query:
+
 SELECT id, account_no
 FROM m_client
 WHERE id BETWEEN 1 AND 3;
@@ -27,6 +31,8 @@ WHERE id BETWEEN 1 AND 3;
 Query 03 — Find Unique Client Status Values
 
 Purpose: Identify the different status_enum values currently stored.
+
+SQL Query:
 
 SELECT DISTINCT status_enum
 FROM m_client;
@@ -37,6 +43,8 @@ Query 04 — Find Unique Office IDs
 
 Purpose: Identify how many different offices are associated with clients.
 
+SQL Query:
+
 SELECT DISTINCT office_id
 FROM m_client;
 
@@ -45,6 +53,8 @@ Observed: 1, 2, 3.
 Query 05 — Verify Status and Office Combinations
 
 Purpose: Identify unique combinations of client status and office.
+
+SQL Query:
 
 SELECT DISTINCT status_enum, office_id
 FROM m_client;
@@ -55,6 +65,8 @@ Query 06 — Count Total Clients
 
 Purpose: Verify the total number of client records.
 
+SQL Query:
+
 SELECT COUNT(*) AS total
 FROM m_client;
 
@@ -63,6 +75,8 @@ Observed: 13.
 Query 07 — Find Minimum and Maximum Client IDs
 
 Purpose: Verify the lowest and highest client IDs currently present.
+
+SQL Query:
 
 SELECT MIN(id) AS minimum,
        MAX(id) AS maximum
@@ -74,6 +88,8 @@ Query 08 — Find Clients With NULL Mobile Number
 
 Purpose: Identify clients where the mobile number is missing.
 
+SQL Query:
+
 SELECT id, display_name
 FROM m_client
 WHERE mobile_no IS NULL;
@@ -83,6 +99,8 @@ Observed: One record was returned during testing.
 Query 09 — Count Clients by Status
 
 Purpose: Verify how many clients exist for each status.
+
+SQL Query:
 
 SELECT status_enum, COUNT(*) AS total
 FROM m_client
@@ -94,6 +112,8 @@ Query 10 — Sort Client Status Counts Descending
 
 Purpose: Display status groups from the highest client count to the lowest.
 
+SQL Query:
+
 SELECT status_enum, COUNT(*) AS total
 FROM m_client
 GROUP BY status_enum
@@ -102,6 +122,8 @@ ORDER BY total DESC;
 Query 11 — Sort Client Status Counts Ascending
 
 Purpose: Display status groups from the lowest client count to the highest.
+
+SQL Query:
 
 SELECT status_enum, COUNT(*) AS data
 FROM m_client
@@ -114,6 +136,8 @@ Query 12 — Find Status Groups Having More Than 5 Clients
 
 Purpose: Identify status values that contain more than five client records.
 
+SQL Query:
+
 SELECT status_enum, COUNT(*) AS total
 FROM m_client
 GROUP BY status_enum
@@ -124,6 +148,8 @@ Observed: status 100 = 9.
 Query 13 — Get Recent Clients
 
 Purpose: Retrieve the three clients with the highest IDs.
+
+SQL Query:
 
 SELECT id, display_name
 FROM m_client
@@ -136,6 +162,8 @@ Query 14 — Get First Three Clients
 
 Purpose: Retrieve the first three clients based on ascending ID.
 
+SQL Query:
+
 SELECT id, display_name
 FROM m_client
 ORDER BY id ASC
@@ -145,6 +173,8 @@ Query 15 — Find Client Names Starting With R
 
 Purpose: Search for client names beginning with R.
 
+SQL Query:
+
 SELECT id, display_name
 FROM m_client
 WHERE display_name LIKE 'R%';
@@ -152,6 +182,8 @@ WHERE display_name LIKE 'R%';
 Query 16 — Find Duplicate Display Names
 
 Purpose: Identify client display names that occur more than once.
+
+SQL Query:
 
 SELECT display_name
 FROM m_client
@@ -164,6 +196,8 @@ Query 17 — Find Duplicate Account Numbers
 
 Purpose: Verify whether the same account number is assigned to multiple clients.
 
+SQL Query:
+
 SELECT account_no, COUNT(*) AS total
 FROM m_client
 WHERE account_no IS NOT NULL
@@ -174,6 +208,8 @@ Query 18 — Find Clients With NULL Account Number
 
 Purpose: Identify clients without an account number.
 
+SQL Query:
+
 SELECT id, account_no, display_name
 FROM m_client
 WHERE account_no IS NULL;
@@ -182,6 +218,8 @@ Query 19 — Find Clients With NULL Display Name
 
 Purpose: Identify client records where the display name is missing.
 
+SQL Query:
+
 SELECT id, display_name
 FROM m_client
 WHERE display_name IS NULL;
@@ -189,6 +227,8 @@ WHERE display_name IS NULL;
 Query 20 — Find Clients With NULL Office ID
 
 Purpose: Identify clients that are not linked to an office.
+
+SQL Query:
 
 SELECT id, display_name
 FROM m_client
@@ -199,6 +239,8 @@ Observed: 0 rows.
 Query 21 — Verify Office Referential Integrity
 
 Purpose: Find clients whose office_id does not exist in m_office.
+
+SQL Query:
 
 SELECT c.id, c.display_name, c.office_id
 FROM m_client c
@@ -211,6 +253,8 @@ Query 22 — Validate Status Values
 
 Purpose: Find client records containing an unexpected status value.
 
+SQL Query:
+
 SELECT DISTINCT status_enum
 FROM m_client
 WHERE status_enum NOT IN (100, 300);
@@ -220,6 +264,8 @@ Observed: 0 rows.
 Query 23 — Find Duplicate Mobile Numbers
 
 Purpose: Verify whether the same mobile number is assigned to multiple clients.
+
+SQL Query:
 
 SELECT mobile_no, COUNT(*) AS total
 FROM m_client
@@ -233,6 +279,8 @@ Query 24 — Validate Mobile Number Length
 
 Purpose: Find mobile numbers that are not exactly 10 characters long.
 
+SQL Query:
+
 SELECT id, display_name, mobile_no
 FROM m_client
 WHERE mobile_no IS NOT NULL
@@ -243,6 +291,8 @@ Observed: 0 rows.
 Query 25 — Validate Mobile Number Characters
 
 Purpose: Find mobile numbers containing letters, spaces, or special characters.
+
+SQL Query:
 
 SELECT id, display_name, mobile_no
 FROM m_client
@@ -255,6 +305,8 @@ Query 26 — Check Available Columns in m_client
 
 Purpose: Identify the actual column names before writing validation queries.
 
+SQL Query:
+
 SELECT column_name
 FROM information_schema.columns
 WHERE table_name = 'm_client'
@@ -265,6 +317,8 @@ Important finding: The email column is email_address, not email.
 Query 27 — Validate Email Format
 
 Purpose: Find populated email addresses that do not match a basic email format.
+
+SQL Query:
 
 SELECT id, display_name, email_address
 FROM m_client
@@ -277,6 +331,8 @@ Query 28 — Find Duplicate Email Addresses
 
 Purpose: Find email addresses assigned to more than one client.
 
+SQL Query:
+
 SELECT email_address, COUNT(*) AS total
 FROM m_client
 WHERE email_address IS NOT NULL
@@ -288,6 +344,8 @@ Observed: One email address was used by 5 client records.
 Query 29 — Identify Clients With Duplicate Emails
 
 Purpose: Retrieve the actual client records associated with duplicate email addresses.
+
+SQL Query:
 
 SELECT id, account_no, display_name, email_address
 FROM m_client
@@ -306,6 +364,8 @@ Query 30 — Check Duplicate External IDs
 
 Purpose: Verify whether multiple clients have the same external_id, which can cause integration/data-mapping problems.
 
+SQL Query:
+
 SELECT external_id, COUNT(*) AS total
 FROM m_client
 WHERE external_id IS NOT NULL
@@ -316,6 +376,8 @@ Query 31 — Check Clients Missing External ID
 
 Purpose: Identify clients that do not have an external_id.
 
+SQL Query:
+
 SELECT id, account_no, display_name
 FROM m_client
 WHERE external_id IS NULL;
@@ -323,6 +385,8 @@ WHERE external_id IS NULL;
 Query 32 — Count Clients by Active Status
 
 Purpose: Check the distribution of is_active values.
+
+SQL Query:
 
 SELECT is_active, COUNT(*) AS total
 FROM m_client
@@ -335,6 +399,8 @@ Query 33 — Count Clients by Office
 
 Purpose: Verify the number of clients assigned to each office.
 
+SQL Query:
+
 SELECT office_id, COUNT(*) AS total_clients
 FROM m_client
 GROUP BY office_id
@@ -343,6 +409,8 @@ ORDER BY total_clients DESC;
 Query 34 — Count Active Clients by Office
 
 Purpose: Verify active-client distribution across offices.
+
+SQL Query:
 
 SELECT office_id, COUNT(*) AS active_clients
 FROM m_client
@@ -354,6 +422,8 @@ Query 35 — Count Inactive Clients by Office
 
 Purpose: Verify inactive-client distribution across offices.
 
+SQL Query:
+
 SELECT office_id, COUNT(*) AS inactive_clients
 FROM m_client
 WHERE is_active = FALSE
@@ -364,6 +434,8 @@ Query 36 — Find Clients With Missing First Name
 
 Purpose: Identify client records with a NULL first name.
 
+SQL Query:
+
 SELECT id, account_no, display_name
 FROM m_client
 WHERE firstname IS NULL;
@@ -371,6 +443,8 @@ WHERE firstname IS NULL;
 Query 37 — Find Clients With Missing Last Name
 
 Purpose: Identify client records with a NULL last name.
+
+SQL Query:
 
 SELECT id, account_no, display_name
 FROM m_client
@@ -380,6 +454,8 @@ Query 38 — Find Clients With Missing Full Name
 
 Purpose: Identify records where fullname is NULL.
 
+SQL Query:
+
 SELECT id, account_no, display_name
 FROM m_client
 WHERE fullname IS NULL;
@@ -387,6 +463,8 @@ WHERE fullname IS NULL;
 Query 39 — Find Clients With Missing Activation Date
 
 Purpose: Identify clients that do not have an activation date.
+
+SQL Query:
 
 SELECT id, account_no, display_name
 FROM m_client
@@ -396,6 +474,8 @@ Query 40 — Find Clients With Future Activation Date
 
 Purpose: Detect clients whose activation date is incorrectly set in the future.
 
+SQL Query:
+
 SELECT id, account_no, display_name, activation_date
 FROM m_client
 WHERE activation_date > CURRENT_DATE;
@@ -404,6 +484,8 @@ Query 41 — Find Clients With Future Submission Date
 
 Purpose: Detect records whose submission date is later than today.
 
+SQL Query:
+
 SELECT id, account_no, display_name, submittedon_date
 FROM m_client
 WHERE submittedon_date > CURRENT_DATE;
@@ -411,6 +493,8 @@ WHERE submittedon_date > CURRENT_DATE;
 Query 42 — Verify Client Status/Office Distribution
 
 Purpose: Analyze the number of clients for each status-office combination.
+
+SQL Query:
 
 SELECT status_enum, office_id, COUNT(*) AS total
 FROM m_client
@@ -421,6 +505,8 @@ Query 43 — Find Active Clients With Missing Mobile Number
 
 Purpose: Identify active clients who do not have a mobile number.
 
+SQL Query:
+
 SELECT id, account_no, display_name
 FROM m_client
 WHERE is_active = TRUE
@@ -429,6 +515,8 @@ WHERE is_active = TRUE
 Query 44 — Find Active Clients With Missing Email
 
 Purpose: Identify active clients who do not have an email address.
+
+SQL Query:
 
 SELECT id, account_no, display_name
 FROM m_client
@@ -439,6 +527,8 @@ Query 45 — Find Clients With Both Mobile and Email Missing
 
 Purpose: Identify client records missing both major contact fields.
 
+SQL Query:
+
 SELECT id, account_no, display_name
 FROM m_client
 WHERE mobile_no IS NULL
@@ -448,6 +538,8 @@ Query 46 — Find Clients With Both Mobile and Email Present
 
 Purpose: Identify clients having both primary contact fields populated.
 
+SQL Query:
+
 SELECT id, account_no, display_name, mobile_no, email_address
 FROM m_client
 WHERE mobile_no IS NOT NULL
@@ -456,6 +548,8 @@ WHERE mobile_no IS NOT NULL
 Query 47 — Verify Account Number Length
 
 Purpose: Find account numbers whose length differs from the expected 9-character format observed in the test data.
+
+SQL Query:
 
 SELECT id, account_no, display_name
 FROM m_client
@@ -468,6 +562,8 @@ Query 48 — Check Account Number Characters
 
 Purpose: Find account numbers containing non-digit characters.
 
+SQL Query:
+
 SELECT id, account_no, display_name
 FROM m_client
 WHERE account_no IS NOT NULL
@@ -476,6 +572,8 @@ WHERE account_no IS NOT NULL
 Query 49 — Find Duplicate Full Names
 
 Purpose: Identify potentially duplicate client identities based on fullname.
+
+SQL Query:
 
 SELECT fullname, COUNT(*) AS total
 FROM m_client
@@ -486,6 +584,8 @@ HAVING COUNT(*) > 1;
 Query 50 — Find Duplicate Mobile and Email Combination
 
 Purpose: Identify clients sharing the exact same mobile/email combination.
+
+SQL Query:
 
 SELECT mobile_no, email_address, COUNT(*) AS total
 FROM m_client
@@ -498,6 +598,8 @@ Query 51 — Verify IDs With Missing Account Number
 
 Purpose: Check whether any client ID lacks a generated account number.
 
+SQL Query:
+
 SELECT id, display_name
 FROM m_client
 WHERE account_no IS NULL
@@ -507,6 +609,8 @@ Query 52 — Find Suspicious Display Names
 
 Purpose: Identify client names containing HTML/script-like characters that may require security-test review.
 
+SQL Query:
+
 SELECT id, display_name
 FROM m_client
 WHERE display_name ~ '[<>]';
@@ -514,6 +618,8 @@ WHERE display_name ~ '[<>]';
 Query 53 — Find Display Names Containing SQL-Like Keywords
 
 Purpose: Identify suspicious data that may have originated from SQL-injection negative testing.
+
+SQL Query:
 
 SELECT id, display_name
 FROM m_client
@@ -525,6 +631,8 @@ Query 54 — Verify Total Active vs Inactive Clients
 
 Purpose: Get a simple active/inactive client count for reconciliation.
 
+SQL Query:
+
 SELECT
     COUNT(*) FILTER (WHERE is_active = TRUE) AS active_clients,
     COUNT(*) FILTER (WHERE is_active = FALSE) AS inactive_clients,
@@ -534,6 +642,8 @@ FROM m_client;
 Query 55 — Verify Client IDs Are Unique
 
 Purpose: Confirm that the primary-key client IDs are not duplicated.
+
+SQL Query:
 
 SELECT id, COUNT(*) AS total
 FROM m_client
@@ -545,6 +655,8 @@ Expected: 0 rows.
 Query 56 — Find Clients Without a Valid Office
 
 Purpose: Combined validation for NULL or invalid office references.
+
+SQL Query:
 
 SELECT c.id, c.account_no, c.display_name, c.office_id
 FROM m_client c
@@ -558,6 +670,8 @@ Query 57 — Verify Status Count Against Total
 
 Purpose: Reconcile grouped status counts with the total number of clients.
 
+SQL Query:
+
 SELECT
     (SELECT COUNT(*) FROM m_client) AS total_clients,
     (SELECT COUNT(DISTINCT status_enum) FROM m_client) AS distinct_statuses;
@@ -565,6 +679,8 @@ SELECT
 Query 58 — Find Recently Created Clients
 
 Purpose: Identify clients created most recently using the created_on_utc audit field.
+
+SQL Query:
 
 SELECT id, account_no, display_name, created_on_utc
 FROM m_client
@@ -575,6 +691,8 @@ Query 59 — Find Recently Modified Clients
 
 Purpose: Identify the clients most recently modified.
 
+SQL Query:
+
 SELECT id, account_no, display_name, last_modified_on_utc
 FROM m_client
 ORDER BY last_modified_on_utc DESC
@@ -583,6 +701,8 @@ LIMIT 10;
 Query 60 — Verify Audit Fields
 
 Purpose: Find records where important audit fields are missing.
+
+SQL Query:
 
 SELECT id, account_no, created_on_utc, created_by
 FROM m_client
@@ -593,6 +713,8 @@ Query 61 — Find Clients With Invalid Date Relationship
 
 Purpose: Identify records where activation occurs before submission.
 
+SQL Query:
+
 SELECT id, account_no, submittedon_date, activation_date
 FROM m_client
 WHERE submittedon_date IS NOT NULL
@@ -602,6 +724,8 @@ WHERE submittedon_date IS NOT NULL
 Query 62 — Verify Client Records Belong to Existing Offices
 
 Purpose: Final referential-integrity check between m_client and m_office.
+
+SQL Query:
 
 SELECT COUNT(*) AS invalid_office_references
 FROM m_client c
