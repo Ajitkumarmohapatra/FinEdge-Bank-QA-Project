@@ -126,4 +126,4 @@ The project is now ready to proceed to:
 
 ---
 
-**End of Phase 2**
+**End of Phase 1**
