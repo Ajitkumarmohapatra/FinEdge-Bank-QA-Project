@@ -1,0 +1,13 @@
+# Maven build
+target/
+
+# Test execution reports
+test-output/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Java compiled files
+*.class
