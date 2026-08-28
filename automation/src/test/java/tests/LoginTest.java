@@ -22,11 +22,12 @@ public class LoginTest extends BaseTest {
 		loginPage.clickLogin();
 
 		Assert.assertTrue(loginPage.isHomePageDisplayed(),"User was not redirected to the Home page after successful login.");
-	/*	Assert.assertTrue(
+/*		Assert.assertTrue(
 			    false,
 			    "Temporary failure to verify screenshot capture."
 			);
-	*/
+			*/
+	
 	}
 	
 	   @Test(priority = 2)
