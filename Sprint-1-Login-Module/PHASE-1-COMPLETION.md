@@ -65,7 +65,7 @@ During this phase, the following business concepts were identified and analyzed:
 
 - README.md
 - 01-Requirement-Analysis.md
-- PHASE-2-COMPLETION.md
+- PHASE-1-COMPLETION.md
 
 ---
 
