@@ -7,7 +7,7 @@
 | Item | Details |
 |------|---------|
 | Project Name | FinEdge Bank QA Project |
-| Sprint | Sprint 2 |
+| Sprint | Sprint 1 |
 | User Story | US-001 |
 | Story Name | Create Client |
 | Phase | Requirement Analysis |
