@@ -3,7 +3,6 @@ package base;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -57,8 +56,8 @@ public class BasePage{
     }
     
     // Wait for element to be visible
-    protected void waitForElement(By locator) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    protected WebElement waitForElement(By locator) {
+       return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
     
  // Wait for URL
@@ -66,8 +65,12 @@ public class BasePage{
         return wait.until(ExpectedConditions.urlContains(urlFragment));
     }
     
-    
+    protected boolean waitForElementToDisappear(By locator) {
 
+        return wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+                    
+    }
+    
     // Select dropdown by visible text
     protected void selectByVisibleText(By locator, String text) {
         Select select = new Select(find(locator));
@@ -85,6 +88,34 @@ public class BasePage{
         Select select = new Select(find(locator));
         select.selectByIndex(index);
     }
+    
+    
+    protected void selectMatOption(By dropdownLocator, String optionText) {
+
+        click(dropdownLocator);
+
+        By optionLocator = By.xpath(
+            "//mat-option[.//span[normalize-space()='" + optionText + "']]"
+        );
+
+        click(optionLocator);
+    }
+    
+    protected void waitForOverlayToDisappear() {
+        By overlay = By.cssSelector(".cdk-overlay-backdrop.cdk-overlay-backdrop-showing");
+                
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(overlay));
+    }
+    
+    
+ // Wait until element is present in DOM
+    protected WebElement waitForElementPresence(By locator) {
+
+        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+                   
+    }
+    
+    
     
     
 }
