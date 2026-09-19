@@ -23,8 +23,8 @@ Enable bank employees to create, manage, and maintain client information so that
 
 | Story ID | User Story | Priority | Story Points | Status |
 |----------|------------|----------|-------------:|--------|
-| US-001 | Create Client | 🔴 High | 8 | 🟡 In Progress |
-| US-002 | Activate Client | 🔴 High | 5 | ⏳ Not Started |
+| US-001 | Create Client | 🔴 High | 8 | ✅ Completed |
+| US-002 | Activate Client | 🔴 High | 5 | 🟡 In Progress |
 | US-003 | View Client Profile | 🔴 High | 3 | ⏳ Not Started |
 | US-004 | Search Client | 🔴 High | 5 | ⏳ Not Started |
 | US-005 | Edit Client Details | 🟡 Medium | 5 | ⏳ Not Started |
