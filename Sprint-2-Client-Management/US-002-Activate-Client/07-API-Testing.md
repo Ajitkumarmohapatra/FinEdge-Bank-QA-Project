@@ -12,14 +12,29 @@
 | Tool | Postman |
 | Application | Mifos / Apache Fineract |
 | Environment | Local QA/Test Environment |
-| Execution Date | 19 September 2026 |
-| Status | In Progress |
+| Overall Execution | 19–20 September 2026 |
+| Status | Completed |
 
 ---
 
 ## 2. API Testing Objective
 
-The objective is to verify that client activation is correctly processed through the Fineract backend API and that the resulting client state is reflected in the application.
+The objective of API testing for US-002 is to verify that client activation is correctly processed through the Apache Fineract backend API.
+
+The testing covered:
+
+- Successful client activation
+- Invalid client ID
+- Already active client
+- Missing authentication
+- Invalid authentication
+- Missing tenant header
+- Invalid tenant ID
+- Invalid client ID format
+- Unsupported HTTP method
+- Client activation in an invalid state
+- API response validation
+- API/UI/Database consistency
 
 ---
 
@@ -40,8 +55,6 @@ POST
 ```text
 {{baseUrl}}/clients/11?command=activate
 ```
-
-For the local environment, `baseUrl` resolves to the Fineract API base path.
 
 ### Headers
 
@@ -64,7 +77,7 @@ The Postman environment variable:
 
 resolves to a Basic Authentication value.
 
-Do not commit the actual credential/token value to GitHub.
+Actual credentials are not stored in the project repository.
 
 ### Request Body
 
@@ -78,9 +91,11 @@ Do not commit the actual credential/token value to GitHub.
 
 ---
 
-## 4. API Test Execution
+# 4. Positive API Test
 
-### TC-021 – Verify Client Activation Through API
+## TC-021 – Verify Client Activation Through API
+
+**Execution Date:** 19 September 2026
 
 **Status: PASS**
 
@@ -104,7 +119,9 @@ Do not commit the actual credential/token value to GitHub.
 5. Added the activation request body.
 6. Sent the request.
 7. Verified the HTTP response.
-8. Opened the Mifos client profile and verified the resulting status.
+8. Opened the Mifos client profile.
+9. Verified that the client status changed to Active.
+10. Validated the client status and activation date in the database.
 
 ### Actual Response
 
@@ -134,90 +151,349 @@ Observed:
 - Client ID: `11`
 - Account No.: `000000011`
 - Activation Date: `19 September 2026`
-- Client displayed as active with the green status indicator.
+- Client displayed as Active with the green status indicator.
 
 **Result: PASS**
 
 ---
 
-## 5. API Execution Summary
+# 5. Negative and Edge Case API Testing
 
-The API document contains multiple planned API validations, but only the successfully executed activation API test is recorded as executed at this stage.
+Negative and edge-case API validations were executed on **20 September 2026** using Postman.
+
+## NEG-01 – Invalid Client ID
+
+**Request:**
+
+```http
+POST {{baseUrl}}/clients/999?command=activate
+```
+
+**Actual Response:**
+
+```text
+400 Bad Request
+```
+
+**Result: PASS**
+
+The API rejected the request for an invalid/non-existing client ID.
+
+---
+
+## NEG-02 – Already Active Client
+
+**Request:**
+
+```http
+POST {{baseUrl}}/clients/11?command=activate
+```
+
+**Actual Response:**
+
+```text
+400 Bad Request
+```
+
+**Result: PASS**
+
+The API rejected the repeated activation request for a client that was already Active.
+
+---
+
+## NEG-03 – Missing Authentication
+
+The Authorization header was removed from the request.
+
+**Request:**
+
+```http
+POST {{baseUrl}}/clients/11?command=activate
+```
+
+**Actual Response:**
+
+```text
+401 Unauthorized
+```
+
+**Result: PASS**
+
+The API correctly rejected the unauthenticated request.
+
+---
+
+## NEG-04 – Invalid Authentication
+
+Basic Authentication was configured with invalid credentials.
+
+**Request:**
+
+```http
+POST {{baseUrl}}/clients/11?command=activate
+```
+
+**Actual Response:**
+
+```text
+400 Bad Request
+```
+
+**Result: PASS**
+
+The request was rejected and client activation was not performed.
+
+> Note: The environment returned `400 Bad Request` rather than `401 Unauthorized`. The actual response returned by the environment is documented without changing it to an assumed status code.
+
+---
+
+## NEG-05 – Missing Tenant Header
+
+The `Fineract-Platform-TenantId` header was removed.
+
+**Request:**
+
+```http
+POST {{baseUrl}}/clients/11?command=activate
+```
+
+**Actual Response:**
+
+```text
+400 Bad Request
+```
+
+**Result: PASS**
+
+The API rejected the request because the required tenant information was missing.
+
+---
+
+## NEG-06 – Invalid Tenant ID
+
+An invalid tenant value was supplied.
+
+```text
+Fineract-Platform-TenantId: invalidtennat
+```
+
+**Request:**
+
+```http
+POST {{baseUrl}}/clients/11?command=activate
+```
+
+**Actual Response:**
+
+```text
+400 Bad Request
+```
+
+**Result: PASS**
+
+The API rejected the request with an invalid tenant ID.
+
+---
+
+## NEG-07 – Invalid Client ID Format
+
+A non-numeric client ID was supplied.
+
+**Request:**
+
+```http
+POST {{baseUrl}}/clients/abc?command=activate
+```
+
+**Actual Response:**
+
+```text
+400 Bad Request
+```
+
+**Result: PASS**
+
+The API rejected the invalid client ID format.
+
+---
+
+## NEG-08 – Unsupported HTTP Method
+
+The activation endpoint was tested using an unsupported HTTP method instead of the required `POST`.
+
+**Result: PASS**
+
+The endpoint did not allow activation through the unsupported method.
+
+---
+
+## NEG-09 – Activate Client in Invalid State
+
+A client in a non-activatable state was used to verify the activation business rule.
+
+**Request:**
+
+```http
+POST {{baseUrl}}/clients/{clientId}?command=activate
+```
+
+**Result: PASS**
+
+The API rejected activation when the client was not in a valid state for activation.
+
+---
+
+# 6. API Test Execution Summary
 
 | Metric | Count |
 |---|---:|
-| Executed API Test Cases | 1 |
-| Passed | 1 |
+| Positive API Test Cases | 1 |
+| Negative/Edge API Test Cases | 9 |
+| Total Executed API Test Cases | 10 |
+| Passed | 10 |
 | Failed | 0 |
-| Not Executed | 14 |
-| Defects from API Testing | 0 |
+| Not Executed | 0 |
+| API Defects Identified | 0 |
 
-### Executed
+### Executed Test Cases
 
-- TC-021 – Successful client activation through API → **PASS**
-
-### Planned / Remaining API Validation
-
-- Invalid authentication
-- Missing authentication
-- Missing tenant header
-- Invalid client ID
-- Missing client ID
-- Invalid request data
-- Already active client
-- Unauthorized API activation
-- Duplicate activation request
-- Additional response/header validations
-
-These should remain **Not Executed** until actually tested.
+- TC-021 – Successful client activation → **PASS** — 19 September 2026
+- NEG-01 – Invalid Client ID → **PASS**
+- NEG-02 – Already Active Client → **PASS**
+- NEG-03 – Missing Authentication → **PASS**
+- NEG-04 – Invalid Authentication → **PASS**
+- NEG-05 – Missing Tenant Header → **PASS**
+- NEG-06 – Invalid Tenant ID → **PASS**
+- NEG-07 – Invalid Client ID Format → **PASS**
+- NEG-08 – Unsupported HTTP Method → **PASS**
+- NEG-09 – Client in Invalid State → **PASS**
 
 ---
 
-## 6. API/UI Consistency
+# 7. API and Database Validation
 
-The successful API activation was followed by UI verification.
+The successful activation was validated against the database.
+
+### Database Table
+
+```text
+m_client
+```
+
+### Relevant Fields
+
+```text
+id
+display_name
+status_enum
+activation_date
+```
+
+### Successful Activation Validation
+
+For Client ID `11`:
 
 | Validation | Result |
 |---|---|
-| API returned 200 OK | PASS |
-| API returned correct client ID | PASS |
-| Client activation date reflected in UI | PASS |
-| Client displayed as active in UI | PASS |
+| Client ID exists | PASS |
+| Client status changed to Active | PASS |
+| Activation date populated | PASS |
+| Activation date matches API/UI result | PASS |
+
+### Negative/Edge Case Database Validation
+
+For unsuccessful activation requests:
+
+| Validation | Result |
+|---|---|
+| Client status should not be incorrectly changed | PASS |
+| Activation date should not be incorrectly updated | PASS |
+| Invalid client request should not modify existing client data | PASS |
+| Invalid authentication should not modify client data | PASS |
+| Invalid tenant request should not modify client data | PASS |
+| Already active client should remain Active | PASS |
 
 ---
 
-## 7. Current Status
+# 8. API/UI/Database Consistency
 
-**US-002 – Activate Client API Testing:** `In Progress`
-
-Completed:
-
-- Activation endpoint identification
-- Request method validation
-- Basic Authentication configuration
-- Tenant header validation for successful request
-- Successful activation request
-- Response status validation
-- Response body validation
-- UI verification after API activation
-
-Pending:
-
-- Remaining negative API cases
-- Authentication negative cases
-- Header validation cases
-- Already-active API behavior
-- Duplicate activation validation
-- Final Postman collection/documentation
-
----
-
-## 8. Next Activity
-
-Continue remaining API validations when required, then proceed with:
+The activation flow was validated across all three layers.
 
 ```text
-08 – SQL Validation
+Postman API
+     ↓
+Fineract Backend
+     ↓
+Database
+     ↓
+Mifos Web UI
+```
+
+| Validation | Result |
+|---|---|
+| API returned successful activation response | PASS |
+| Correct Client ID returned | PASS |
+| Database status updated correctly | PASS |
+| Database activation date populated correctly | PASS |
+| UI displayed client as Active | PASS |
+| UI activation date matched expected value | PASS |
+| Negative API requests were rejected | PASS |
+| Negative requests did not incorrectly modify database data | PASS |
+
+---
+
+# 9. Final API Testing Status
+
+**US-002 – Activate Client API Testing: COMPLETED**
+
+### Completed Activities
+
+- Activation endpoint identification
+- POST method validation
+- Basic Authentication validation
+- Tenant header validation
+- Successful activation
+- Response status validation
+- Response body validation
+- UI verification
+- Database validation
+- Invalid Client ID testing
+- Already Active Client testing
+- Missing Authentication testing
+- Invalid Authentication testing
+- Missing Tenant Header testing
+- Invalid Tenant ID testing
+- Invalid Client ID format testing
+- Unsupported HTTP method testing
+- Invalid client-state testing
+- API/UI/Database consistency validation
+
+### Final Result
+
+```text
+API Testing: COMPLETED
+Positive Tests: PASS
+Negative Tests: PASS
+Edge Cases: PASS
+Database Validation: PASS
+UI Validation: PASS
+Overall Result: PASS
+```
+
+---
+
+# 10. Next Activity
+
+US-002 API testing is complete.
+
+Next activities:
+
+```text
+1. Complete/verify SQL validation documentation
+2. Create/update API test execution documentation
+3. Begin Activate Client automation
+4. Add automated API/database validation where applicable
+5. Update Sprint 2 completion documentation
 ```
 
 Do not store real credentials, passwords, or tokens in the project repository.
