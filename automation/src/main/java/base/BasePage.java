@@ -1,6 +1,8 @@
 package base;
 
+
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -113,6 +115,10 @@ public class BasePage{
 
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
                    
+    }
+    
+    protected List<WebElement> findElements(By locator) {
+        return DriverManager.getDriver().findElements(locator);
     }
     
     
