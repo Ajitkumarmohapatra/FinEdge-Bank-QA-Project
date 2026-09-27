@@ -27,7 +27,9 @@ public class BasePage{
     
     // Click element
     protected void click(By locator) {
-        find(locator).click();
+
+        wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+        
     }
 
     // Enter text
@@ -120,8 +122,5 @@ public class BasePage{
     protected List<WebElement> findElements(By locator) {
         return DriverManager.getDriver().findElements(locator);
     }
-    
-    
-    
     
 }

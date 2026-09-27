@@ -1,10 +1,13 @@
 package pages;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import base.BasePage;
 import components.NavigationMenu;
@@ -54,6 +57,55 @@ public class ActiveClientPage extends BasePage {
     
     private By clientNames =
             By.cssSelector("div.list-row span.name");
+    
+    // for warning and password manage after login 
+    private By warningCloseButton =
+            By.cssSelector("mat-dialog-actions button[mat-dialog-close]");
+    
+    
+    private By activatedOnDateField =
+            By.cssSelector("input[placeholder='Activated On Date']");
+
+   
+    private By activationCalendarButton =
+            By.cssSelector("button[aria-label='Open calendar']");
+    
+    private By todayDate =
+            By.cssSelector("mat-calendar button[aria-current='date']");
+    
+    private By confirmButton =
+            By.xpath("//button[normalize-space()='Confirm']");
+    
+    
+    public void clickActivationCalendar() {
+        click(activationCalendarButton);
+    }
+    
+    public void selectToday() {
+
+        String todayDateValue = java.time.LocalDate.now()
+                .format(java.time.format.DateTimeFormatter.ofPattern("d MMMM yyyy"));
+
+        By todayDate = By.cssSelector(
+                "mat-calendar button[aria-label='" + todayDateValue + "']"
+        );
+
+        WebElement today = wait.until(
+                org.openqa.selenium.support.ui.ExpectedConditions
+                        .elementToBeClickable(todayDate)
+        );
+
+        today.click();
+        
+        
+    }
+    public void clickConfirm() {
+        click(confirmButton);
+    }
+    
+    public void closeWarning() {
+        click(warningCloseButton);
+    }
 
 
     public void navigateToClients() {
@@ -83,14 +135,63 @@ public class ActiveClientPage extends BasePage {
     
     public List<String> getRecentClientNames() {
 
+        // Wait until client names are loaded
+        waitForElementPresence(clientNames);
+
         List<WebElement> elements = findElements(clientNames);
 
         List<String> names = new ArrayList<>();
 
         for (int i = 0; i < Math.min(5, elements.size()); i++) {
-            names.add(elements.get(i).getText().trim());
+
+            String name = elements.get(i).getText().trim();
+
+            if (!name.isEmpty()) {
+                names.add(name);
+            }
         }
 
         return names;
     }
+    public String getPendingClientName() {
+
+        By clientRows = By.cssSelector("div.list-row");
+
+        waitForElementPresence(clientRows);
+
+        List<WebElement> rows = findElements(clientRows);
+
+        for (WebElement row : rows) {
+
+            String rowText = row.getText().trim();
+
+            if (rowText.contains("PENDING")) {
+
+                WebElement nameElement =
+                        row.findElement(By.cssSelector("span.name"));
+
+                return nameElement.getText().trim();
+            }
+        }
+
+        throw new RuntimeException(
+                "No PENDING client found on Clients page."
+        );
+    } 
+    
+    public boolean isClientActive(String clientName) {
+
+        By clientRow = clientRow(clientName);
+
+        WebElement row = wait.until(
+            ExpectedConditions.visibilityOfElementLocated(clientRow)
+        );
+
+        String rowText = row.getText().trim();
+
+        System.out.println("Activated Client Row: " + rowText);
+
+        return rowText.contains("ACTIVE");
+    }
+    
 }

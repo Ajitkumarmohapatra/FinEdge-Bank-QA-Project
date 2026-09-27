@@ -88,7 +88,5 @@ public class LoginPage extends BasePage {
 
         return loginButton.isEnabled();
     }
-    
- 
 
 }
