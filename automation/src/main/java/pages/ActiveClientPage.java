@@ -28,8 +28,7 @@ public class ActiveClientPage extends BasePage {
     private By clientRow(String clientName) {
         return By.xpath("//div[contains(@class,'list-row')]" +
             "[.//span[contains(@class,'name') and contains(normalize-space(),'" +
-            clientName + "')]]"
-        );
+            clientName + "')]]");
     }
 
     // Client profile hamburger menu
