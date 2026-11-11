@@ -22,22 +22,18 @@ public class ActiveClientPage extends BasePage {
     }
 
     // Clients page
-    private By clientSearchField =
-            By.cssSelector(
-                "input[placeholder='Search by client name, external Id, mobile']");
+    private By clientSearchField =By.cssSelector("input[placeholder='Search by client name, external Id, mobile']");
 
     // Dynamic client row
     private By clientRow(String clientName) {
-        return By.xpath(
-            "//div[contains(@class,'list-row')]" +
+        return By.xpath("//div[contains(@class,'list-row')]" +
             "[.//span[contains(@class,'name') and contains(normalize-space(),'" +
             clientName + "')]]"
         );
     }
 
     // Client profile hamburger menu
-    private By actionsMenu =
-            By.cssSelector("mat-icon.actions-menu");
+    private By actionsMenu =By.cssSelector("mat-icon.actions-menu");
 
     // Actions submenu
     private By actionsMenuItem =
